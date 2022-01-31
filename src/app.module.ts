@@ -3,6 +3,7 @@ import { TypeOrmModule } from '@nestjs/typeorm';
 import * as fs from 'fs';
 import { AppController } from './app.controller';
 import { AppService } from './app.service';
+import { DestinationsModule } from './destinations/destinations.module';
 
 @Module({
   imports: [
@@ -24,6 +25,7 @@ import { AppService } from './app.service';
       // https://typeorm.io/#/migrations
       synchronize: true,
     }),
+    DestinationsModule,
   ],
   controllers: [AppController],
   providers: [AppService],
