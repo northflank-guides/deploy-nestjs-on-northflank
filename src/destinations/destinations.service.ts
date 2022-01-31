@@ -1,26 +1,34 @@
 import { Injectable } from '@nestjs/common';
+import { InjectRepository } from '@nestjs/typeorm';
+import { Repository } from 'typeorm';
 import { CreateDestinationDto } from './dto/create-destination.dto';
 import { UpdateDestinationDto } from './dto/update-destination.dto';
+import { Destination } from './entities/destination.entity';
 
 @Injectable()
 export class DestinationsService {
+  constructor(
+    @InjectRepository(Destination)
+    private destinationsRepository: Repository<Destination>,
+  ) {}
+
   create(createDestinationDto: CreateDestinationDto) {
-    return 'This action adds a new destination';
+    return this.destinationsRepository.save(createDestinationDto);
   }
 
   findAll() {
-    return `This action returns all destinations`;
+    return this.destinationsRepository.find();
   }
 
   findOne(id: number) {
-    return `This action returns a #${id} destination`;
+    return this.destinationsRepository.findOne(id);
   }
 
   update(id: number, updateDestinationDto: UpdateDestinationDto) {
-    return `This action updates a #${id} destination`;
+    return this.destinationsRepository.update(id, updateDestinationDto);
   }
 
   remove(id: number) {
-    return `This action removes a #${id} destination`;
+    return this.destinationsRepository.delete(id);
   }
 }
