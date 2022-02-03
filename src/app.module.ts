@@ -2,6 +2,7 @@ import { Module } from '@nestjs/common';
 import { TypeOrmModule } from '@nestjs/typeorm';
 import { AppController } from './app.controller';
 import { AppService } from './app.service';
+import { DestinationsModule } from './destinations/destinations.module';
 
 @Module({
   imports: [
@@ -21,6 +22,7 @@ import { AppService } from './app.service';
       // https://typeorm.io/#/migrations
       synchronize: true,
     }),
+    DestinationsModule,
   ],
   controllers: [AppController],
   providers: [AppService],
