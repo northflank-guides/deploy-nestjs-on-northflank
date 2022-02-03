@@ -27,7 +27,7 @@ export class DestinationsController {
 
   @Get(':id')
   findOne(@Param('id') id: string) {
-    return this.destinationsService.findOne(+id);
+    return this.destinationsService.findOne(id);
   }
 
   @Patch(':id')
@@ -35,11 +35,11 @@ export class DestinationsController {
     @Param('id') id: string,
     @Body() updateDestinationDto: UpdateDestinationDto,
   ) {
-    return this.destinationsService.update(+id, updateDestinationDto);
+    return this.destinationsService.update(id, updateDestinationDto);
   }
 
   @Delete(':id')
   remove(@Param('id') id: string) {
-    return this.destinationsService.remove(+id);
+    return this.destinationsService.remove(id);
   }
 }
